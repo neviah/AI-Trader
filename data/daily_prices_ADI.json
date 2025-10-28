@@ -2,11 +2,18 @@
     "Meta Data": {
         "1. Information": "Daily Prices (open, high, low, close) and Volumes",
         "2. Symbol": "ADI",
-        "3. Last Refreshed": "2025-10-24",
+        "3. Last Refreshed": "2025-10-27",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2025-10-27": {
+            "1. open": "239.6950",
+            "2. high": "244.1100",
+            "3. low": "238.3450",
+            "4. close": "243.0100",
+            "5. volume": "3506236"
+        },
         "2025-10-24": {
             "1. open": "245.4500",
             "2. high": "245.5100",
@@ -699,13 +706,6 @@
             "3. low": "217.0200",
             "4. close": "218.0400",
             "5. volume": "3496524"
-        },
-        "2025-06-04": {
-            "1. open": "219.8300",
-            "2. high": "221.1900",
-            "3. low": "217.3300",
-            "4. close": "218.5000",
-            "5. volume": "4199395"
         }
     }
 }

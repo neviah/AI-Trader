@@ -2,11 +2,18 @@
     "Meta Data": {
         "1. Information": "Daily Prices (open, high, low, close) and Volumes",
         "2. Symbol": "ROST",
-        "3. Last Refreshed": "2025-10-24",
+        "3. Last Refreshed": "2025-10-27",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2025-10-27": {
+            "1. open": "159.4700",
+            "2. high": "161.9500",
+            "3. low": "159.2300",
+            "4. close": "160.7300",
+            "5. volume": "3812370"
+        },
         "2025-10-24": {
             "1. open": "156.9800",
             "2. high": "157.8300",
@@ -699,13 +706,6 @@
             "3. low": "140.7200",
             "4. close": "142.2400",
             "5. volume": "1620748"
-        },
-        "2025-06-04": {
-            "1. open": "143.9700",
-            "2. high": "144.4200",
-            "3. low": "142.0200",
-            "4. close": "142.5100",
-            "5. volume": "2260587"
         }
     }
 }

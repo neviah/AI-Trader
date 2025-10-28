@@ -2,11 +2,18 @@
     "Meta Data": {
         "1. Information": "Daily Prices (open, high, low, close) and Volumes",
         "2. Symbol": "ROP",
-        "3. Last Refreshed": "2025-10-24",
+        "3. Last Refreshed": "2025-10-27",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2025-10-27": {
+            "1. open": "476.5200",
+            "2. high": "476.5250",
+            "3. low": "458.9200",
+            "4. close": "463.7300",
+            "5. volume": "1631106"
+        },
         "2025-10-24": {
             "1. open": "482.5900",
             "2. high": "483.3550",
@@ -699,13 +706,6 @@
             "3. low": "565.5000",
             "4. close": "569.4850",
             "5. volume": "656700"
-        },
-        "2025-06-04": {
-            "1. open": "567.2800",
-            "2. high": "569.2950",
-            "3. low": "563.3000",
-            "4. close": "568.0100",
-            "5. volume": "737257"
         }
     }
 }

@@ -2,11 +2,18 @@
     "Meta Data": {
         "1. Information": "Daily Prices (open, high, low, close) and Volumes",
         "2. Symbol": "ADP",
-        "3. Last Refreshed": "2025-10-24",
+        "3. Last Refreshed": "2025-10-27",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2025-10-27": {
+            "1. open": "280.9700",
+            "2. high": "282.8900",
+            "3. low": "280.0900",
+            "4. close": "280.5300",
+            "5. volume": "1980093"
+        },
         "2025-10-24": {
             "1. open": "282.2500",
             "2. high": "282.8600",
@@ -699,13 +706,6 @@
             "3. low": "324.6750",
             "4. close": "326.2300",
             "5. volume": "1817739"
-        },
-        "2025-06-04": {
-            "1. open": "325.7200",
-            "2. high": "327.5600",
-            "3. low": "323.9600",
-            "4. close": "326.2100",
-            "5. volume": "1229954"
         }
     }
 }

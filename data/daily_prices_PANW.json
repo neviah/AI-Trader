@@ -2,11 +2,18 @@
     "Meta Data": {
         "1. Information": "Daily Prices (open, high, low, close) and Volumes",
         "2. Symbol": "PANW",
-        "3. Last Refreshed": "2025-10-24",
+        "3. Last Refreshed": "2025-10-27",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2025-10-27": {
+            "1. open": "219.7900",
+            "2. high": "221.0900",
+            "3. low": "218.0000",
+            "4. close": "220.2900",
+            "5. volume": "5439642"
+        },
         "2025-10-24": {
             "1. open": "217.0000",
             "2. high": "218.2250",
@@ -699,13 +706,6 @@
             "3. low": "194.1100",
             "4. close": "197.1100",
             "5. volume": "3549790"
-        },
-        "2025-06-04": {
-            "1. open": "195.2200",
-            "2. high": "197.2500",
-            "3. low": "193.4700",
-            "4. close": "194.0700",
-            "5. volume": "3360595"
         }
     }
 }

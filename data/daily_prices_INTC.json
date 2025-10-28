@@ -2,11 +2,18 @@
     "Meta Data": {
         "1. Information": "Daily Prices (open, high, low, close) and Volumes",
         "2. Symbol": "INTC",
-        "3. Last Refreshed": "2025-10-24",
+        "3. Last Refreshed": "2025-10-27",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2025-10-27": {
+            "1. open": "38.3900",
+            "2. high": "40.6700",
+            "3. low": "38.2300",
+            "4. close": "39.5400",
+            "5. volume": "160007604"
+        },
         "2025-10-24": {
             "1. open": "40.0200",
             "2. high": "41.1200",
@@ -699,13 +706,6 @@
             "3. low": "19.8500",
             "4. close": "19.9900",
             "5. volume": "72595606"
-        },
-        "2025-06-04": {
-            "1. open": "20.3400",
-            "2. high": "20.5000",
-            "3. low": "20.0100",
-            "4. close": "20.2500",
-            "5. volume": "71166549"
         }
     }
 }

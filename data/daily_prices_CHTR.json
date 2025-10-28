@@ -2,11 +2,18 @@
     "Meta Data": {
         "1. Information": "Daily Prices (open, high, low, close) and Volumes",
         "2. Symbol": "CHTR",
-        "3. Last Refreshed": "2025-10-24",
+        "3. Last Refreshed": "2025-10-27",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2025-10-27": {
+            "1. open": "244.7700",
+            "2. high": "247.6559",
+            "3. low": "243.4399",
+            "4. close": "245.4400",
+            "5. volume": "2278710"
+        },
         "2025-10-24": {
             "1. open": "246.2200",
             "2. high": "247.7600",
@@ -699,13 +706,6 @@
             "3. low": "388.8100",
             "4. close": "391.2700",
             "5. volume": "942193"
-        },
-        "2025-06-04": {
-            "1. open": "392.4100",
-            "2. high": "395.2400",
-            "3. low": "388.7400",
-            "4. close": "388.7700",
-            "5. volume": "878049"
         }
     }
 }

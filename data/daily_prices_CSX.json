@@ -2,11 +2,18 @@
     "Meta Data": {
         "1. Information": "Daily Prices (open, high, low, close) and Volumes",
         "2. Symbol": "CSX",
-        "3. Last Refreshed": "2025-10-24",
+        "3. Last Refreshed": "2025-10-27",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2025-10-27": {
+            "1. open": "36.3300",
+            "2. high": "36.3400",
+            "3. low": "35.6550",
+            "4. close": "36.0000",
+            "5. volume": "10314872"
+        },
         "2025-10-24": {
             "1. open": "35.6300",
             "2. high": "36.2000",
@@ -699,13 +706,6 @@
             "3. low": "31.6400",
             "4. close": "31.7400",
             "5. volume": "11821446"
-        },
-        "2025-06-04": {
-            "1. open": "31.8400",
-            "2. high": "32.0600",
-            "3. low": "31.6550",
-            "4. close": "31.9300",
-            "5. volume": "13669376"
         }
     }
 }
