@@ -2,11 +2,18 @@
     "Meta Data": {
         "1. Information": "Daily Prices (open, high, low, close) and Volumes",
         "2. Symbol": "CRWD",
-        "3. Last Refreshed": "2025-10-27",
+        "3. Last Refreshed": "2025-10-28",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2025-10-28": {
+            "1. open": "536.8100",
+            "2. high": "553.6400",
+            "3. low": "535.9800",
+            "4. close": "546.9400",
+            "5. volume": "3367427"
+        },
         "2025-10-27": {
             "1. open": "532.5400",
             "2. high": "534.3400",
@@ -699,13 +706,6 @@
             "3. low": "463.1200",
             "4. close": "468.4100",
             "5. volume": "4342957"
-        },
-        "2025-06-05": {
-            "1. open": "462.3250",
-            "2. high": "468.6000",
-            "3. low": "452.7100",
-            "4. close": "462.9400",
-            "5. volume": "6188822"
         }
     }
 }

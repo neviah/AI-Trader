@@ -2,11 +2,18 @@
     "Meta Data": {
         "1. Information": "Daily Prices (open, high, low, close) and Volumes",
         "2. Symbol": "MSTR",
-        "3. Last Refreshed": "2025-10-27",
+        "3. Last Refreshed": "2025-10-28",
         "4. Output Size": "Compact",
         "5. Time Zone": "US/Eastern"
     },
     "Time Series (Daily)": {
+        "2025-10-28": {
+            "1. open": "295.1400",
+            "2. high": "297.2000",
+            "3. low": "284.2500",
+            "4. close": "284.6400",
+            "5. volume": "7996793"
+        },
         "2025-10-27": {
             "1. open": "299.5000",
             "2. high": "299.8000",
@@ -699,13 +706,6 @@
             "3. low": "369.7100",
             "4. close": "374.4700",
             "5. volume": "9384245"
-        },
-        "2025-06-05": {
-            "1. open": "383.8500",
-            "2. high": "385.3799",
-            "3. low": "364.3029",
-            "4. close": "368.7900",
-            "5. volume": "11957637"
         }
     }
 }
