@@ -9,6 +9,7 @@ import json
 import asyncio
 from datetime import datetime, timedelta
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from dotenv import load_dotenv
 import requests
 from typing import Dict, List, Any
@@ -17,6 +18,13 @@ from typing import Dict, List, Any
 load_dotenv()
 
 app = Flask(__name__)
+
+# Enable CORS for all routes to allow frontend connections
+CORS(app, origins=[
+    "https://aitraderfrontend-3zw5gn09a-didiers-projects-f2a81b9f.vercel.app",
+    "https://*.vercel.app",
+    "http://localhost:3000"  # for development
+])
 
 class SimpleAITrader:
     def __init__(self):
