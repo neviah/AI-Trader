@@ -14,9 +14,11 @@
     },
     {
       "name": "deepseek-chat-v3.1",
-      "basemodel": "deepseek/deepseek-chat-v3.1",
+      "basemodel": "deepseek-chat",
       "signature": "deepseek-chat-v3.1",
-      "enabled": false
+      "enabled": true,
+      "openai_base_url": "https://api.deepseek.com/v1",
+      "openai_api_key": "sk-5acc8133626e4969acfab04bf3c86b9f"
     },
     {
       "name": "qwen3-max",
@@ -40,7 +42,7 @@
       "name": "gpt-4.1",
       "basemodel": "openai/gpt-4.1",
       "signature": "gpt-4.1",
-      "enabled": true
+      "enabled": false
     },
     {
       "name": "MiniMax-M2",

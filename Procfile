@@ -1,0 +1,1 @@
+web: python services/alpaca_bridge.py

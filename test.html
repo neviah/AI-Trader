@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Trader Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .form {
+            background: white;
+            color: #333;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            max-width: 400px;
+        }
+        .input {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn {
+            background: #667eea;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+        }
+        .btn:hover {
+            background: #5a6fd8;
+        }
+        .validation-info {
+            font-size: 0.875rem;
+            color: #666;
+            text-align: left;
+            margin-top: 0.5rem;
+        }
+        .validation-info ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 AI Trader</h1>
+        <p>Enhanced Registration with Validation Feedback</p>
+        
+        <div class="form">
+            <h2>Create Account</h2>
+            <form id="registrationForm">
+                <input type="text" class="input" placeholder="Full Name" id="fullName">
+                
+                <input type="text" class="input" placeholder="Username" id="username">
+                <div class="validation-info">
+                    3-50 characters, letters, numbers, underscore, and hyphens only
+                </div>
+                
+                <input type="email" class="input" placeholder="your@email.com" id="email">
+                
+                <input type="password" class="input" placeholder="Create a strong password" id="password">
+                <div class="validation-info">
+                    <p>Password must contain:</p>
+                    <ul>
+                        <li>At least 8 characters</li>
+                        <li>One uppercase letter (A-Z)</li>
+                        <li>One lowercase letter (a-z)</li>
+                        <li>One number (0-9)</li>
+                        <li>One special character (!@#$%^&*)</li>
+                    </ul>
+                </div>
+                
+                <button type="submit" class="btn">Create Account</button>
+            </form>
+            
+            <div id="message" style="margin-top: 1rem; padding: 0.75rem; border-radius: 4px; display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Mock validation for demonstration purposes
+        function validateForm(formData) {
+            const errors = [];
+            
+            // Username validation
+            if (formData.username.length < 3) {
+                errors.push('Username must be at least 3 characters long');
+            } else if (formData.username.length > 50) {
+                errors.push('Username must be less than 50 characters');
+            } else if (!/^[a-zA-Z0-9_-]+$/.test(formData.username)) {
+                errors.push('Username can only contain letters, numbers, underscores, and hyphens');
+            }
+            
+            // Password validation
+            if (formData.password.length < 8) {
+                errors.push('Password must be at least 8 characters long');
+            } else if (!/[A-Z]/.test(formData.password)) {
+                errors.push('Password must contain at least one uppercase letter');
+            } else if (!/[a-z]/.test(formData.password)) {
+                errors.push('Password must contain at least one lowercase letter');
+            } else if (!/\d/.test(formData.password)) {
+                errors.push('Password must contain at least one number');
+            } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(formData.password)) {
+                errors.push('Password must contain at least one special character');
+            }
+            
+            // Email validation
+            if (!formData.email.includes('@')) {
+                errors.push('Invalid email format');
+            }
+            
+            return errors;
+        }
+        
+        document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const messageDiv = document.getElementById('message');
+            const formData = {
+                full_name: document.getElementById('fullName').value,
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+            
+            // Client-side validation demo
+            const errors = validateForm(formData);
+            
+            if (errors.length > 0) {
+                messageDiv.style.background = '#f8d7da';
+                messageDiv.style.color = '#721c24';
+                messageDiv.style.border = '1px solid #f5c6cb';
+                messageDiv.innerHTML = `
+                    <strong>Registration Failed:</strong><br>
+                    ${errors.map(error => `• ${error}`).join('<br>')}
+                `;
+                messageDiv.style.display = 'block';
+                return;
+            }
+            
+            // Simulate successful registration
+            messageDiv.style.background = '#d4edda';
+            messageDiv.style.color = '#155724';
+            messageDiv.style.border = '1px solid #c3e6cb';
+            messageDiv.innerHTML = `
+                <strong>✅ Registration Successful!</strong><br>
+                Enhanced validation features demonstrated:
+                <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+                    <li>Username format validation (3-50 chars, alphanumeric + _ -)</li>
+                    <li>Password complexity requirements (8+ chars, upper/lower/numbers/special)</li>
+                    <li>Real-time error feedback</li>
+                    <li>Enhanced user experience with clear guidance</li>
+                </ul>
+                <em>This demo shows the validation system that was implemented for your AI-Trader registration form!</em>
+            `;
+            messageDiv.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+"use strict";(()=>{var t={};t.id=1567,t.ids=[1567],t.modules={517:t=>{t.exports=require("next/dist/compiled/next-server/app-route.runtime.prod.js")},2081:t=>{t.exports=require("child_process")},1017:t=>{t.exports=require("path")},7952:(t,e,a)=>{a.r(e),a.d(e,{headerHooks:()=>m,originalPathname:()=>y,requestAsyncStorage:()=>d,routeModule:()=>g,serverHooks:()=>h,staticGenerationAsyncStorage:()=>u,staticGenerationBailout:()=>f});var i={};a.r(i),a.d(i,{GET:()=>GET,POST:()=>POST});var r=a(884),o=a(6132),s=a(5798),n=a(2081),l=a(1017);let c=require("fs/promises");var p=a.n(c);let HKUDSIntegration=class HKUDSIntegration{constructor(){this.projectRoot="/workspaces/AI-Trader",this.agentSignature="master-ai-frontend",this.configPath=(0,l.join)(this.projectRoot,"configs","master_config.json"),this.positionFile=(0,l.join)(this.projectRoot,"data","agent_data",this.agentSignature,"position","position.jsonl")}async initializeMasterAgent(){try{let t=(0,l.join)(this.projectRoot,"configs","default_config.json"),e=JSON.parse(await p().readFile(t,"utf8")),a={...e,agent_type:"BaseAgent",market:"us",date_range:{init_date:new Date().toISOString().split("T")[0],end_date:new Date(Date.now()+31536e6).toISOString().split("T")[0]},models:e.models.map(t=>({...t,signature:this.agentSignature,enabled:"deepseek-chat-v3.1"===t.name})),agent_config:{...e.agent_config,initial_cash:1e5,max_steps:15},log_config:{log_path:"./data/agent_data"}};await p().writeFile(this.configPath,JSON.stringify(a,null,2)),console.log(`🔧 Created Master AI config at ${this.configPath}`)}catch(t){throw console.error("Failed to initialize Master AI config:",t),t}}async runTradingSession(t){let e=t||new Date().toISOString().split("T")[0];return new Promise((t,a)=>{let i=(0,n.spawn)("python",[(0,l.join)(this.projectRoot,"main.py"),"--config",this.configPath,"--date",e,"--signature",this.agentSignature],{cwd:this.projectRoot,env:{...process.env,PYTHONPATH:this.projectRoot}}),r="",o="";i.stdout.on("data",t=>{r+=t.toString(),console.log("HKUDS Output:",t.toString())}),i.stderr.on("data",t=>{o+=t.toString(),console.error("HKUDS Error:",t.toString())}),i.on("close",async e=>{if(0===e)try{let e=await this.parseLatestDecisions();t(e)}catch(t){a(Error(`Failed to parse trading decisions: ${t}`))}else a(Error(`HKUDS process failed with code ${e}: ${o}`))}),setTimeout(()=>{i.kill(),a(Error("HKUDS process timed out"))},3e5)})}async parseLatestDecisions(){try{let t=await p().readFile(this.positionFile,"utf8"),e=t.trim().split("\n").filter(t=>t.trim());if(e.length<2)return[];let a=JSON.parse(e[e.length-1]);e.length>1&&JSON.parse(e[e.length-2]);let i=[];if(a.this_action){let t=a.this_action;i.push({symbol:t.symbol,action:t.action,amount:t.amount,reasoning:`AI analysis completed for ${t.symbol}`,confidence:.75,technicalFactors:["Moving average analysis","RSI indicators"],fundamentalFactors:["Market sentiment","Earnings outlook"],price:t.price||0,timestamp:a.date})}return i}catch(t){return console.error("Error parsing trading decisions:",t),[]}}async getCurrentPortfolio(){try{let t=await p().readFile(this.positionFile,"utf8"),e=t.trim().split("\n").filter(t=>t.trim());if(0===e.length)return{cash:1e5,positions:{},totalValue:1e5,lastUpdated:new Date().toISOString()};let a=JSON.parse(e[e.length-1]),i={...a.positions},r=i.CASH||0;delete i.CASH;let o=r;for(let[t,e]of Object.entries(i))o+=150*e;return{cash:r,positions:i,totalValue:o,lastUpdated:a.date}}catch(t){return console.error("Error getting current portfolio:",t),{cash:1e5,positions:{},totalValue:1e5,lastUpdated:new Date().toISOString()}}}async getPerformanceMetrics(){return new Promise((t,e)=>{let a=`
+import sys
+import os
+sys.path.insert(0, '${this.projectRoot}')
+from tools.result_tools import calculate_all_metrics
+import json
+
+try:
+    metrics = calculate_all_metrics('${this.agentSignature}', market='us')
+    print('METRICS_JSON:' + json.dumps(metrics))
+except Exception as e:
+    print('ERROR:' + str(e))
+`,i=(0,n.spawn)("python",["-c",a],{cwd:this.projectRoot,env:{...process.env,PYTHONPATH:this.projectRoot}}),r="",o="";i.stdout.on("data",t=>{r+=t.toString()}),i.stderr.on("data",t=>{o+=t.toString()}),i.on("close",a=>{if(0===a)try{let e=r.split("\n").find(t=>t.startsWith("METRICS_JSON:"));if(e){let a=JSON.parse(e.replace("METRICS_JSON:",""));t({cumulativeReturn:a.cumulative_return||0,sharpeRatio:a.sharpe_ratio||0,maxDrawdown:a.max_drawdown||0,volatility:a.volatility||0,winRate:a.win_rate||0,profitLossRatio:a.profit_loss_ratio||0,totalTradingDays:a.total_trading_days||0,startDate:a.start_date||"",endDate:a.end_date||""})}else t({cumulativeReturn:0,sharpeRatio:0,maxDrawdown:0,volatility:0,winRate:0,profitLossRatio:0,totalTradingDays:0,startDate:"",endDate:""})}catch(t){e(Error(`Failed to parse metrics: ${t}`))}else e(Error(`Python process failed: ${o}`))})})}async isInitialized(){try{return await p().access(this.positionFile),!0}catch{return!1}}async registerAgent(){return new Promise((t,e)=>{let a=`
+import sys
+import os
+sys.path.insert(0, '${this.projectRoot}')
+from agent.base_agent.base_agent import BaseAgent
+import json
+
+try:
+    config_path = '${this.configPath}'
+    with open(config_path, 'r') as f:
+        config = json.load(f)
+    
+    agent = BaseAgent(
+        signature='${this.agentSignature}',
+        basemodel='deepseek-chat',
+        stock_symbols=[
+            "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "TSLA", "META", "BRK.A",
+            "UNH", "XOM", "LLY", "V", "JNJ", "WMT", "JPM", "MA", "PG", "ORCL"
+        ],
+        initial_cash=100000.0,
+        max_steps=15
+    )
+    
+    agent.register_agent()
+    print('SUCCESS: Agent registered')
+except Exception as e:
+    print('ERROR:' + str(e))
+`,i=(0,n.spawn)("python",["-c",a],{cwd:this.projectRoot,env:{...process.env,PYTHONPATH:this.projectRoot}}),r="",o="";i.stdout.on("data",t=>{r+=t.toString()}),i.stderr.on("data",t=>{o+=t.toString()}),i.on("close",a=>{0===a&&r.includes("SUCCESS")?t():e(Error(`Agent registration failed: ${o}`))})})}};async function GET(){try{let t=new HKUDSIntegration;await t.isInitialized()||(await t.initializeMasterAgent(),await t.registerAgent());let e=await t.getPerformanceMetrics(),a=await t.getCurrentPortfolio();return s.Z.json({success:!0,metrics:{totalReturn:e.cumulativeReturn,annualizedReturn:e.cumulativeReturn,sharpeRatio:e.sharpeRatio,maxDrawdown:e.maxDrawdown,volatility:e.volatility,winRate:e.winRate,profitLossRatio:e.profitLossRatio,tradingDays:e.totalTradingDays},portfolio:{totalValue:a.totalValue,cash:a.cash,positions:a.positions,lastUpdated:a.lastUpdated},performance:{daily:[],monthly:[],quarterly:[]}})}catch(t){return console.error("Analytics error:",t),s.Z.json({success:!1,error:"Failed to fetch analytics data",message:t instanceof Error?t.message:"Unknown error"},{status:500})}}async function POST(t){try{let{action:e}=await t.json(),a=new HKUDSIntegration;if("initialize"===e)return await a.initializeMasterAgent(),await a.registerAgent(),s.Z.json({success:!0,message:"HKUDS Master Agent initialized successfully"});return s.Z.json({success:!1,error:"Invalid action"},{status:400})}catch(t){return console.error("Analytics initialization error:",t),s.Z.json({success:!1,error:"Failed to initialize analytics",message:t instanceof Error?t.message:"Unknown error"},{status:500})}}let g=new r.AppRouteRouteModule({definition:{kind:o.x.APP_ROUTE,page:"/api/analytics/route",pathname:"/api/analytics",filename:"route",bundlePath:"app/api/analytics/route"},resolvedPagePath:"/workspaces/AI-Trader/frontend/app/api/analytics/route.ts",nextConfigOutput:"",userland:i}),{requestAsyncStorage:d,staticGenerationAsyncStorage:u,serverHooks:h,headerHooks:m,staticGenerationBailout:f}=g,y="/api/analytics/route"}};var e=require("../../../webpack-runtime.js");e.C(t);var __webpack_exec__=t=>e(e.s=t),a=e.X(0,[1997],()=>__webpack_exec__(7952));module.exports=a})();
