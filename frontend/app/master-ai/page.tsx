@@ -194,7 +194,14 @@ export default function MasterAIPage() {
                 Back to Dashboard
               </Link>
               
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-4">
+                <Link 
+                  href="/performance" 
+                  className="flex items-center text-blue-600 hover:text-blue-800 transition-colors bg-blue-50 px-3 py-2 rounded-lg"
+                >
+                  <TrendingUp size={16} className="mr-2" />
+                  View AI Performance
+                </Link>
                 <div className={`px-3 py-1 rounded-full text-sm font-medium ${
                   aiTradingActive ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
                 }`}>

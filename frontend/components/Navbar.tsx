@@ -1,5 +1,5 @@
 import { useAuth } from '@/lib/auth'
-import { LogOut, User, Home, TrendingUp, Wallet, Activity, Settings, BarChart3, Bot } from 'lucide-react'
+import { LogOut, User, Home, TrendingUp, Wallet, Activity, Settings, BarChart3, Bot, Target } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -10,6 +10,7 @@ export default function Navbar() {
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: Home },
     { name: 'Master AI', href: '/master-ai', icon: Bot },
+    { name: 'Performance', href: '/performance', icon: Target },
     { name: 'Portfolio', href: '/portfolio', icon: TrendingUp },
     { name: 'Wallet', href: '/wallet', icon: Wallet },
     { name: 'Market', href: '/market', icon: BarChart3 },
