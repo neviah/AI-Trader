@@ -332,7 +332,7 @@ def health_check():
         "status": "healthy",
         "service": "AI Trading Backend",
         "timestamp": datetime.now().isoformat(),
-        "version": "1.0.0"
+        "version": "1.1.0"
     })
 
 @app.route('/api/master-ai-analysis', methods=['POST'])
