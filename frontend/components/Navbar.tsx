@@ -10,7 +10,6 @@ export default function Navbar() {
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: Home },
     { name: 'Master AI', href: '/master-ai', icon: Bot },
-    { name: 'Performance', href: '/performance', icon: Target },
     { name: 'Portfolio', href: '/portfolio', icon: TrendingUp },
     { name: 'Wallet', href: '/wallet', icon: Wallet },
     { name: 'Market', href: '/market', icon: BarChart3 },
