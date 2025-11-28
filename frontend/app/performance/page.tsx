@@ -38,7 +38,7 @@ export default function PerformancePage() {
   const fetchPerformanceData = async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://ai-trader-yiea.onrender.com/api/performance');
+      const response = await fetch('https://ai-trader-backend-3nsl.onrender.com/api/performance');
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

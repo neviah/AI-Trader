@@ -63,8 +63,8 @@ export default function MasterAIPage() {
   const loadMasterPortfolio = async () => {
     try {
       // Call your live Render backend for portfolio data
-      const response = await fetch('https://ai-trader-yiea.onrender.com/api/portfolio')
-      if (response.ok) {
+      const response = await fetch('https://ai-trader-backend-3nsl.onrender.com/api/portfolio')
+      if (!response.ok) {
         const data = await response.json()
         setMasterPortfolio(data.masterPortfolio)
       }
@@ -78,7 +78,7 @@ export default function MasterAIPage() {
     setShowSuccessMessage(false)
     try {
       // Call your live Render backend instead of mock Supabase
-      const response = await fetch('https://ai-trader-yiea.onrender.com/api/master-ai-analysis', {
+      const response = await fetch('https://ai-trader-backend-3nsl.onrender.com/api/master-ai-analysis', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
