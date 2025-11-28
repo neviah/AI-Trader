@@ -326,8 +326,8 @@ class SimpleAITrader:
 trader = SimpleAITrader()
 
 @app.route('/')
-def health_check():
-    """Health check endpoint"""
+def home():
+    """Home endpoint"""
     return jsonify({
         "status": "healthy",
         "service": "AI Trading Backend",
